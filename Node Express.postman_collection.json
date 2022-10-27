@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "bf738201-130c-4047-bc5c-22268a89f8e2",
+		"name": "Node Express",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Fibonacci",
+			"item": [
+				{
+					"name": "Fibonacci",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbW9zX2RhdGEiOiJ7XCJUb2tlblwiOlwidm8yWTFVWFo5NU5sMGRVVUdsUFY1cVc5a3lReUZCY1VFNTNnakY4QVU3RmlRV3FYL2tnRE0yc0x3OHRlWWNwUGlaejZaZnR1aE92VFJhRE5BQWZnRUkwMmROSy9mNUhHZ243dW4xM2VHZ1hQMCtlY0M5RitxdTRqdGxsd0pLSWY2b0M0MFdpMG9pZGoxUEFWdmxjWDB0OC9yY3B1ZXBPbnFhOVhubGQxTkloUDlhOTdmbkxlbkQ3TzBtb0pVb3ZrZURFZVpZcVJ0MGNaeGsxU1BhclVwZ3NQektGcExzNFlzUmMvVkZkNEN4M3p3YTRidHJUWmRRUVZsYTJTY3BoS3VCTTJzVjJMZlRqM0JHMGF5UDU0VFE9PVwiLFwiVG9rZW5JRFwiOlwiNTgxZjc3MDAtYjVkNi00ZTE1LWE4OGEtYjk2ZmViMDJkMjFiOjViYzg0N2Y1LTA2MDQtNDQ2OC1hZGRjLTkyMWZhMTljMjc0YVwiLFwiVGVuYW50SURcIjpcIkNPU1RBLTEyMzRcIn0iLCJuYmYiOjE2NDk2NjY1NzEsImV4cCI6MTY0OTcyNjU3MSwiaWF0IjoxNjQ5NjY2NTcxfQ.MzezxQbXBzfRSk45YIYM4xCkPQd2vpaFRdjdZDNw4cU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUser By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dni\": 3434343,\r\n    \"nombre\": \"Esteban\",\r\n    \"apellido\": \"QUito\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateUser",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dni\": 1000000,\r\n    \"nombre\": \"Diego\",\r\n    \"apellido\": \"Angerossa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dni\": 1000000,\r\n    \"nombre\": \"Diego\",\r\n    \"apellido\": \"Angerossa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
