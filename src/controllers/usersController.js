@@ -1,4 +1,4 @@
-const userDataAccess = require('../dataAccess/userDataAccess');
+const { userDataAccess } = require('../dataAccess');
 
 
 
@@ -27,20 +27,20 @@ const updateUser = (req, res) => {
     const user = req.body
 
     userDataAccess.updateUser(userId, user, (updatedUser) => {
-        res.send({sucess: true, data: updatedUser})
+        res.send({ sucess: true, data: updatedUser })
     }, (error) => {
-        res.status(500).send({sucess: false, error})
-    }) 
+        res.status(500).send({ sucess: false, error })
+    })
 
 }
 
 const deleteUser = (req, res) => {
 
     const userId = parseInt(req.params.userId)
-    userDataAccess.deleteUser(userId, (newArray)=>{
-        res.send({sucess: true, data: newArray})
-    }, (error) =>{
-        res.status(500).send({sucess: false, error})
+    userDataAccess.deleteUser(userId, (newArray) => {
+        res.send({ sucess: true, data: newArray })
+    }, (error) => {
+        res.status(500).send({ sucess: false, error })
     })
 }
 
@@ -48,8 +48,8 @@ const getUserById = (req, res) => {
     const userId = parseInt(req.params.userId)
 
     userDataAccess.getUserById(userId, user => {
-        res.send({sucess: true, data: user})
-    }, error => res.status(500).send({sucess: false, error}))
+        res.send({ sucess: true, data: user })
+    }, error => res.status(500).send({ sucess: false, error }))
 
 }
 

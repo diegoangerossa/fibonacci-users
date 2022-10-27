@@ -5,32 +5,32 @@ const users = [{
     id: 1
 }]
 
-let lastId = 1; 
+let lastId = 1;
 
 
-const getUsers = ({nombre = "", apellido = ""}) => {
+const getUsers = ({ nombre = "", apellido = "" }) => {
     let filtrados = users;
 
-   
-    if (nombre){
+
+    if (nombre) {
         console.log(nombre)
-        filtrados = users.filter( user => user.nombre.toLowerCase().includes(nombre.toLowerCase()))
+        filtrados = users.filter(user => user.nombre.toLowerCase().includes(nombre.toLowerCase()))
     }
-    if (apellido){
-        filtrados = filtrados.filter( user => user.apellido.toLowerCase().includes(apellido.toLowerCase()))
+    if (apellido) {
+        filtrados = filtrados.filter(user => user.apellido.toLowerCase().includes(apellido.toLowerCase()))
     }
-    
+
     return filtrados
 }
 
 const getUserById = (userId, sucess, failure) => {
-    if ( isNaN(userId))
-    return failure(`Debe especificar un id de usuario`)  
+    if (isNaN(userId))
+        return failure(`Debe especificar un id de usuario`)
 
-    const index = users.findIndex( user => user.id === userId)
+    const index = users.findIndex(user => user.id === userId)
 
-    if ( isNaN(index) || index < 0 )
-    return failure(`El usuario con id = ${userId} no existe`)
+    if (isNaN(index) || index < 0)
+        return failure(`El usuario con id = ${userId} no existe`)
 
     return sucess(users[index])
 
@@ -38,19 +38,19 @@ const getUserById = (userId, sucess, failure) => {
 
 const createUser = (newUser, sucess, failure) => {
     console.log(newUser);
-   
-    if (typeof(newUser) != "object" )
+
+    if (typeof (newUser) != "object")
         return failure("El parametro no es un objecto.")
-    
-    if(!(newUser.dni && newUser.nombre && newUser.apellido) )
-      return failure("Campos dni, nombre y apellido son obligatorio")
-    
-    const exists = users.find(user => user.dni === newUser.dni) 
+
+    if (!(newUser.dni && newUser.nombre && newUser.apellido))
+        return failure("Campos dni, nombre y apellido son obligatorio")
+
+    const exists = users.find(user => user.dni === newUser.dni)
     if (exists)
         return failure("El usuario ya existe")
 
     //generamos un nuevo ID
-    lastId ++
+    lastId++
     newUser.id = lastId
     users.push(newUser)
 
@@ -58,36 +58,36 @@ const createUser = (newUser, sucess, failure) => {
     return sucess(newUser);
 }
 
-const deleteUser = (userId, success, failure) =>{
-   
-    if ( isNaN(userId))
-        return failure(`Debe especificar un id de usuario`)    
+const deleteUser = (userId, success, failure) => {
 
-    const index = users.findIndex( user => user.id === userId)
+    if (isNaN(userId))
+        return failure(`Debe especificar un id de usuario`)
 
-    console.log("Index: ", index)
+    const index = users.findIndex(user => user.id === userId)
 
-     if ( isNaN(index) || index < 0 )
+    //console.log("Index: ", index)
+
+    if (isNaN(index) || index < 0)
         return failure(`El usuario con id = ${userId} no existe`)
 
     users.splice(index, 1)
     return success(users)
-} 
+}
 
-const updateUser = (userId, userToUpdate, sucess, failure) =>{
-    if ( isNaN(userId))
-        return failure(`Debe especificar un id de usuario`)  
+const updateUser = (userId, userToUpdate, sucess, failure) => {
+    if (isNaN(userId))
+        return failure(`Debe especificar un id de usuario`)
 
-    const index = users.findIndex( user => user.id === userId)
+    const index = users.findIndex(user => user.id === userId)
 
-    if ( isNaN(index) || index < 0 )
-    return failure(`El usuario con id = ${userId} no existe`)
+    if (isNaN(index) || index < 0)
+        return failure(`El usuario con id = ${userId} no existe`)
 
-    if (typeof(userToUpdate) != "object" )
-    return failure("El parametro no es un objecto.")
+    if (typeof (userToUpdate) != "object")
+        return failure("El parametro no es un objecto.")
 
-    if(!(userToUpdate.dni && userToUpdate.nombre && userToUpdate.apellido) )
-    return failure("Campos dni, nombre y apellido son obligatorio")
+    if (!(userToUpdate.dni && userToUpdate.nombre && userToUpdate.apellido))
+        return failure("Campos dni, nombre y apellido son obligatorio")
 
     userToUpdate.id = userId
     users[index] = userToUpdate
